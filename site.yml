@@ -1,0 +1,4 @@
+- name: general laptop development setup
+  hosts: laptop
+  roles:
+    - software
