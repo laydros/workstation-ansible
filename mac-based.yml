@@ -1,0 +1,5 @@
+- name: general laptop development setup
+  hosts: laptop
+  gather_facts: true
+  roles:
+    - mac-software

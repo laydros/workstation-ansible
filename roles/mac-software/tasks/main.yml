@@ -1,0 +1,72 @@
+---
+# tasks file for mac-software
+- name: Install basic tools from homebrew
+  homebrew: name={{ item }} state=present
+    with_items:
+      - bat
+      - curl
+      - exa
+      - fd
+      - git
+      - htop
+      - ncdu
+      - neovim
+      - ripgrep
+      - ssh-copy-id
+      - tree
+      - tmux
+    state: present
+
+- name: Install more software from homebrew
+  homebrew: name={{ item }} state=present
+    with_items:
+      - aria2
+      - btop
+      - detox
+      - duf
+      - ffmpeg
+      - irssi
+      - handbrake
+      - mas
+      - neofetch
+      - neovim
+      - mpv
+      - oksh
+      - syncthing
+      - teeldeer
+      - transmission
+      - yadm
+      - yt-dlp
+    state: present
+
+- name: Install cask packages
+  homebrew_cask: name={{ item }} state=present
+  with_items:
+    - alfred
+    - bettertouchtool
+    - bitwarden
+    - firefox
+    - iterm2
+    - libreoffice
+    - mattermost
+    - musicbrainz-picard
+    - openemu
+    - protonmail-bridge
+    - protonvpn
+    - signal
+    - spotify
+    - steam
+    - soundsource
+    - transmission
+    - transmit
+    - vlc
+
+- name: Install software from mac app store (must be logged in first)
+  community.general.mas:
+    id:
+      - 937984704 # amphetamine
+      - 975937182 # fantastical2
+      - 587512244 # kaleidoscope
+      - 924726344 # deliveries
+      - 407963104 # pixelmator
+      - 1295203466 # Microsoft Remote Desktop 10

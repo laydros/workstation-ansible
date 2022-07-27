@@ -1,0 +1,67 @@
+---
+# tasks file for fedora-software
+- name: Install basic command line tools
+  become: yes
+  ansible.builtin.yum: 
+    pkg:
+      - bat
+      - curl
+      - exa
+      - gcc
+      - gcc-c++
+      - git
+      - htop
+      - kernel-devel
+      - make
+      - ncdu
+      - ripgrep
+      - tree
+      - tmux
+      - zsh
+    state: present
+
+- name: Install more software
+  become: yes
+  ansible.builtin.yum: 
+    pkg:
+      - alacritty
+      - aria2
+      - btop
+      - detox
+      - duf
+      - flatpak
+      - handbrake
+      - irssi
+      - neofetch
+      - neovim
+      - mpv
+      - oksh
+      - ripgrep
+      - syncthing
+      - tldr
+      - yt-dlp
+# maybe tmux-powerline
+#      - yadm
+    state: present
+
+# ffmpeg from rpm fusion?
+# yadm https://yadm.io/docs/install#rpm-based-installations
+
+- name: Setup Flathub remote for flatpak
+  community.general.flatpak_remote:
+    name: flathub
+    state: present
+    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
+    method: user
+
+- name: Add flatpak packages
+  community.general.flatpak: name={{item}} state=present method=user
+  with_items:
+    - org.musicbrainz.Picard
+    - com.transmissionbt.Transmission
+    - com.github.tchx84.Flatseal
+    - com.mattermost.Desktop
+    - com.bitwarden.desktop
+    - com.spotify.client
+    - ch.protonmail.protonmail-bridge
+    - org.libreoffice.LibreOffice

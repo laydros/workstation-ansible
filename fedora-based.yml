@@ -1,0 +1,6 @@
+- name: general laptop development setup
+  hosts: laptop
+  gather_facts: true
+  roles:
+    - fedora-software
+    - m3db-client
