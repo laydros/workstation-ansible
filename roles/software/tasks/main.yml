@@ -44,3 +44,5 @@
     - com.mattermost.Desktop
     - com.bitwarden.desktop
     - com.spotify.client
+    - ch.protonmail.protonmail-bridge
+    - org.libreoffice.LibreOffice
