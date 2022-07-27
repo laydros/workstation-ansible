@@ -25,12 +25,14 @@
       - detox
       - duf
       - ffmpeg
-      - irssi
+      - git-delta
       - handbrake
+      - irssi
       - mas
       - neofetch
       - neovim
       - mpv
+      - mupdf
       - oksh
       - syncthing
       - teeldeer
@@ -49,6 +51,7 @@
     - iterm2
     - libreoffice
     - mattermost
+    - meld
     - musicbrainz-picard
     - openemu
     - protonmail-bridge
@@ -57,6 +60,7 @@
     - spotify
     - steam
     - soundsource
+    - tor-browser
     - transmission
     - transmit
     - vlc

@@ -30,15 +30,18 @@
       - detox
       - duf
       - flatpak
+      - git-delta
       - handbrake
       - irssi
       - neofetch
       - neovim
       - mpv
+      - mupdf
       - oksh
       - ripgrep
       - syncthing
       - tldr
+      - torbrowser-launcher
       - yt-dlp
 # maybe tmux-powerline
 #      - yadm
@@ -52,16 +55,21 @@
     name: flathub
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: user
+      #    method: user
 
 - name: Add flatpak packages
-  community.general.flatpak: name={{item}} state=present method=user
+  community.general.flatpak: name={{item}} state=present #method=user
   with_items:
-    - org.musicbrainz.Picard
-    - com.transmissionbt.Transmission
+    - ch.protonmail.protonmail-bridge
+    - com.bitwarden.desktop
+    - com.github.marktext.marktext
     - com.github.tchx84.Flatseal
     - com.mattermost.Desktop
-    - com.bitwarden.desktop
     - com.spotify.client
-    - ch.protonmail.protonmail-bridge
+    - com.transmissionbt.Transmission
+    - io.gitlab.librewolf-community
     - org.libreoffice.LibreOffice
+    - org.musicbrainz.Picard
+    - org.remmina.Remmina
+    
+
