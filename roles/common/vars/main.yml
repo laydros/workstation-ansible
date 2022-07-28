@@ -12,9 +12,12 @@ common_tools:
   - tmux
   - zsh
 
-more_shared_pkgs:
+shared_pkgs:
+  - ansible
+  - ansible-lint
   - aria2
   - btop
+  - cmake
   - detox
   - duf
   - ffmpeg
@@ -25,5 +28,6 @@ more_shared_pkgs:
   - neovim
   - mpv
   - mupdf
+  - pkg-config
   - syncthing
   - yt-dlp

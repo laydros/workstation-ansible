@@ -1,5 +1,5 @@
 ---
-# vars file for common
+# vars file for RedHat in common
 distro_packages:
   - flatpak
   - gcc
@@ -10,3 +10,11 @@ distro_packages:
   - git-delta
   - oksh
   - torbrowser-launcher
+
+rust_pkgs:
+  - cmake
+  - freetype-devel
+  - fontconfig-devel
+  - libxcb-devel
+  - libxkbcommon-devel
+  - g++

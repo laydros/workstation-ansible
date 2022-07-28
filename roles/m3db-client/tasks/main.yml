@@ -24,7 +24,7 @@
 # state: present means create but don't mount. state: mounted means create if it doesn't exist and mount
 - name: add m3db to fstab (right now this messes up backslashes and must be fixed manually)
   become: yes
-  mount:
+  ansible.posix.mount:
     name: /home/m3db
     src: "//ral.factor500.com/m3db"
     fstype: cifs

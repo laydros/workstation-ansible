@@ -2,3 +2,16 @@
 # vars file for common
 distro_packages:
   - flatpak
+  - fd-find
+  - torbrowser-launcher
+  - yadm
+
+rust_pkgs:
+  - cmake
+  - freetype2
+  - fontconfig
+  - pkg-config
+  - make
+  - libxcb
+  - libxkbcommon
+  - python

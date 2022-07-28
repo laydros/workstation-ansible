@@ -1,6 +1,17 @@
 ---
 # tasks file to install rustup for common
+- name: Install rust prerequisites
+  become: true
+  become_user: root
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ rust_pkgs }}"
+
 - name: install rust by rustup
   shell: |
     set -o pipefail
     curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+  args:
+    creates: "$HOME/.cargo/bin/rustup"
+    executable: /bin/bash

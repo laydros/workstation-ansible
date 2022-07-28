@@ -1,8 +1,17 @@
 ---
-# vars file for common
+# vars file for Debian in common
 distro_packages:
   - flatpak
   - fd-find
   - torbrowser-launcher
   - yadm
   - build-essential
+
+rust_pkgs:
+  - cmake
+  - pkg-config
+  - libfreetype6-dev
+  - libfontconfig1-dev
+  - libxcb-xfixes0-dev
+  - libxkbcommon-dev
+  - python3
