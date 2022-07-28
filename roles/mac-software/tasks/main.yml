@@ -27,6 +27,7 @@
       - ffmpeg
       - git-delta
       - handbrake
+      - httpie
       - irssi
       - mas
       - neofetch

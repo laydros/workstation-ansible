@@ -37,6 +37,7 @@
       - flatpak
       - gnome-software-plugin-flatpak
       - handbrake
+      - httpie
       - irssi
 #      - oksh
       - neofetch
