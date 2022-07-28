@@ -1,10 +1,6 @@
 - name: general laptop development setup
   hosts: laptop
   gather_facts: true
-  tasks:
-    - name: add debian backports
-      debug:
-        msg: need to do this
 
   roles:
     - debian_software

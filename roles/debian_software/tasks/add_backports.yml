@@ -3,18 +3,28 @@
 - name: Load distro specific variables
   include_vars: {{ ansible_distribution }}.yml
 
-- name: add debian backports and update package cache
-  block:
-    - name: add backports repository
-      ansible.builtin.apt_repository:
-        repo: 
-        state: present
-        filename: debian-backports
-    - name: update the package cache
-      ansible.builtin.apt:
-        force_apt_get: yes
-        update_cache: yes
-  when: ansible_distribution_release in supported_releases | default([])
+    #- name: add debian backports and update package cache
+    #  block:
+    #    - name: add backports repository
+    #      ansible.builtin.apt_repository:
+    #        repo: 
+    #        state: present
+    #        filename: debian-backports
+    #    - name: update the package cache
+    #      ansible.builtin.apt:
+    #        force_apt_get: yes
+    #        update_cache: yes
+    #  when: ansible_distribution_release in supported_releases | default([])
+
+- name: install additional packages for debian
+  apt:
+    pkg: "{{ backports_prereqs }}"
+    state: present
+  when: backports_prereqs | length > 0
+
+- name: set backports_uri
+  set_fact:
+    backports_uri: "deb {{ backports_base_uri }} {{ backports_components }}"
 
 - name: add debian backports and update cache
   ansible.builtin.apt_repository:
