@@ -1,0 +1,12 @@
+---
+# vars file for common
+distro_packages:
+  - flatpak
+  - gcc
+  - gcc-c++
+  - kernel-devel
+  - make
+  - alacritty
+  - git-delta
+  - oksh
+  - torbrowser-launcher

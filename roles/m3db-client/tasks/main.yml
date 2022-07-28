@@ -1,3 +1,32 @@
 ---
 # tasks file for m3db-client
+- name: create /home/m3db directory if it doesn't exist
+  become: yes
+  file:
+    path: /home/m3db
+    state: directory
+    mode: 0777
 
+- name: Install cifs packages for using samba share
+  become: yes
+  apt: 
+    name: cifs-utils
+    state: present
+    update_cache: yes
+    cache_valid_time: 3600
+
+- name: Enable service to hopefully help cifs mount on boot
+  ansible.builtin.systemd:
+    name: systemd-networkd-wait-online
+    enabled: yes
+    state: started
+
+# state: present means create but don't mount. state: mounted means create if it doesn't exist and mount
+- name: add m3db to fstab (right now this messes up backslashes and must be fixed manually)
+  become: yes
+  mount:
+    name: /home/m3db
+    src: "//ral.factor500.com/m3db"
+    fstype: cifs
+    opts: defaults,rw,nocase,gid=500,uid=500,file_mode=0777,dir_mode=0777
+    state: mounted

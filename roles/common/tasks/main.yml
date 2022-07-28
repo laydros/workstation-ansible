@@ -1,2 +1,11 @@
 ---
 # tasks file for common
+- name: Install common tools
+  package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ common_tools }}"
+
+- name: install rust by rustup
+  import_tasks: install-rust.yml
+

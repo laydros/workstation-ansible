@@ -1,2 +1,29 @@
 ---
 # vars file for common
+common_tools:
+  - bat
+  - curl
+  - exa
+  - git
+  - htop
+  - ncdu
+  - ripgrep
+  - tree
+  - tmux
+  - zsh
+
+more_shared_pkgs:
+  - aria2
+  - btop
+  - detox
+  - duf
+  - ffmpeg
+  - handbrake
+  - httpie
+  - irssi
+  - neofetch
+  - neovim
+  - mpv
+  - mupdf
+  - syncthing
+  - yt-dlp

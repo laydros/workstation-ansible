@@ -1,0 +1,8 @@
+---
+# vars file for common
+distro_packages:
+  - flatpak
+  - fd-find
+  - torbrowser-launcher
+  - yadm
+  - build-essential

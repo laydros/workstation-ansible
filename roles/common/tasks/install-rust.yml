@@ -1,0 +1,6 @@
+---
+# tasks file to install rustup for common
+- name: install rust by rustup
+  shell: |
+    set -o pipefail
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y

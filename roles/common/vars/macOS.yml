@@ -1,0 +1,34 @@
+---
+# vars file for common
+distro_packages:
+  - fd
+  - ssh-copy-id
+  - git-delta
+  - mas
+  - oksh
+  - teeldear
+  - transmission
+  - yadm
+  - yt-dlp
+
+cask_packages:
+  - alfred
+  - bettertouchtool
+  - bitwarden
+  - firefox
+  - iterm2
+  - libreoffice
+  - mattermost
+  - meld
+  - musicbrainz-picard
+  - openemu
+  - protonmail-bridge
+  - protonvpn
+  - signal
+  - spotify
+  - steam
+  - soundsource
+  - tor-browser
+  - transmission
+  - transmit
+  - vlc

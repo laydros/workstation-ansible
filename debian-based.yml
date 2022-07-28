@@ -2,5 +2,6 @@
   hosts: laptop
   gather_facts: true
   roles:
+    - common
     - debian-software
     - m3db-client
