@@ -3,11 +3,24 @@
 
 - name: add debian backports if on debian
   debug:
-    msg: need to do this
+    msg: need to do this with apt_repository
+
+- name: add debian backports and update package cache
+  block:
+    - name: add backports repository
+      ansible.builtin.apt_repository:
+        repo: 
+        state: present
+        filename: debian-backports
+    - name: update the package cache
+      ansible.builtin.apt:
+        force_apt_get: yes
+        update_cache: yes
+  when: ansible_distribution_release in supported_releases | default([])
 
 - name: Install basic command line tools
   become: yes
-  apt: 
+  apt:
     pkg:
       - bat
       - build-essential
@@ -26,7 +39,7 @@
 
 - name: Install more specific software
   become: yes
-  apt: 
+  apt:
     pkg:
       - aria2
       - btop
@@ -52,4 +65,3 @@
     state: present
     update_cache: yes
     cache_valid_time: 3600
-

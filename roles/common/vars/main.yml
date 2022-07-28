@@ -21,6 +21,7 @@ shared_pkgs:
   - detox
   - duf
   - ffmpeg
+  - gitk
   - handbrake
   - httpie
   - irssi

@@ -7,7 +7,7 @@
         msg: need to do this
 
   roles:
-    - debian-software
+    - debian_software
     - common
     - flatpak
-    - m3db-client
+    - m3db_client
