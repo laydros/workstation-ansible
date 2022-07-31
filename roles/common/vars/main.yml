@@ -32,3 +32,9 @@ shared_pkgs:
   - pkg-config
   - syncthing
   - yt-dlp
+
+rust_pkgs:
+  - gcc
+  - make
+  - cmake
+  - pkg-config

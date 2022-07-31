@@ -1,5 +1,9 @@
 ---
 # tasks file for common
+- name: report ansible_os_family value
+  debug:
+    msg: "Var ansible_os_family is set to {{ ansible_os_family }}"
+
 - name: Set distro-specific variables
   include_vars: "{{ item }}"
   with_first_found:
