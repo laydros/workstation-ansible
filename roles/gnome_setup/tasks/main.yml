@@ -1,0 +1,18 @@
+---
+# tasks file for gnome_setup
+
+- name: install gnome tweaks
+  become: true
+  ansible.builtin.package:
+    name: "{{ item }}"
+    state: present
+  with_items: "{{ gnome_pkgs }}"
+
+- name: update gsettings
+  command: gsettings set $item[0] $item[1] $item[2]
+  with_items:
+    - ["org.gnome.desktop.interface", "enable-hot-corners", "true"]
+    - ["org.gnome.desktop.interface", "show-battery-percentage", "true"]
+    - ["org.gnome.desktop.wm.preferences", "button-layout", "':minimize,maximize,close'"]
+    - ["org.gnome.desktop.wm.preferences", "mouse-button-modifier", "'<Alt>'"]
+    - ["org.gnome.desktop.wm.preferences", "resize-with-right-button", "true"]

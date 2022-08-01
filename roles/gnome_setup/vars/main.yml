@@ -1,0 +1,4 @@
+---
+# vars file for gnome_setup
+gnome_pkgs:
+  - gnome-tweaks
