@@ -18,14 +18,14 @@
   ansible.builtin.systemd:
     name: systemd-networkd-wait-online
     enabled: yes
-    state: started
+    state: stopped
 
 # state: present means create but don't mount. state: mounted means create if it doesn't exist and mount
 - name: add m3db to fstab (right now this messes up backslashes and must be fixed manually)
-  become: yes
+  become: true
   ansible.posix.mount:
-    name: /home/m3db
+    path: /home/m3db
     src: "//ral.factor500.com/m3db"
     fstype: cifs
-    opts: defaults,rw,nocase,gid=500,uid=500,file_mode=0777,dir_mode=0777
-    state: mounted
+    opts: defaults,rw,nocase,gid=500,uid=500,file_mode=0777,dir_mode=0777,username=m3db
+    state: present

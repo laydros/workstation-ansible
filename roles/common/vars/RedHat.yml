@@ -1,14 +1,15 @@
 ---
 # vars file for RedHat in common
-distro_packages:
+distro_pkgs:
+  - alacritty
   - flatpak
   - gcc
   - gcc-c++
+  - git-delta
   - kernel-devel
   - make
-  - alacritty
-  - git-delta
   - oksh
+  - tealdeer
   - torbrowser-launcher
 
 rust_pkgs:

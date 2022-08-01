@@ -1,6 +1,6 @@
 ---
 # vars file for common
-distro_packages:
+distro_pkgs:
   - flatpak
   - fd-find
   - torbrowser-launcher
