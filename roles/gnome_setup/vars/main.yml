@@ -16,3 +16,7 @@ desktop_settings:
     #  - [schema: "org.gnome.desktop.wm.preferences", key: "button-layout", value: "':minimize,maximize,close'"]
     #  - [schema: "org.gnome.desktop.wm.preferences", key: "mouse-button-modifier", value: "'<Alt>'"]
     #  - [schema: "org.gnome.desktop.wm.preferences", key: "resize-with-right-button", value: "true"]
+
+workspace_switching:
+  - "org.gnome.desktop.wm.keybindings switch-to-workspace-left \"['<Primary><Super>Left']\""
+  - "org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Primary><Super>Right']\""
