@@ -8,6 +8,10 @@
     state: present
   with_items: "{{ gnome_pkgs }}"
 
-- name: update gsettings
+- name: Set desktop gsettings
   command: gsettings set {{ item }}
   with_items: "{{ desktop_settings }}"
+
+- name: Set workspace switching keyboard shortcuts
+  command: gsettings set {{ item }}
+  with_items: "{{ keyboard_shortcuts }}"
