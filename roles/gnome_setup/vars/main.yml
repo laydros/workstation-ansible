@@ -2,3 +2,17 @@
 # vars file for gnome_setup
 gnome_pkgs:
   - gnome-tweaks
+  
+desktop_settings:
+  - "org.gnome.desktop.interface enable-hot-corners true"
+  - "org.gnome.desktop.interface show-battery-percentage true"
+  - "org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'"
+  - "org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'"
+  - "org.gnome.desktop.wm.preferences resize-with-right-button true"
+
+
+    #  - [schema: "org.gnome.desktop.interface", key: "enable-hot-corners", value: "true"]
+    #  - [schema: "org.gnome.desktop.interface", key: "show-battery-percentage", value: "true"]
+    #  - [schema: "org.gnome.desktop.wm.preferences", key: "button-layout", value: "':minimize,maximize,close'"]
+    #  - [schema: "org.gnome.desktop.wm.preferences", key: "mouse-button-modifier", value: "'<Alt>'"]
+    #  - [schema: "org.gnome.desktop.wm.preferences", key: "resize-with-right-button", value: "true"]
