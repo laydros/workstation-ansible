@@ -1,6 +1,15 @@
 ---
 # tasks file for gnome_setup
 
+- name: Install gnome stuff for Fedora
+  become: true
+  dnf:
+    name: 
+      - gnome-shell-extension-appindicator
+      - gnome-shell-extension-dash-to-dock
+    state: present
+  when: ansible_distribution == 'Fedora'
+
 - name: install gnome tweaks
   become: true
   ansible.builtin.package:

@@ -9,6 +9,8 @@ desktop_settings:
   - "org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'"
   - "org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'"
   - "org.gnome.desktop.wm.preferences resize-with-right-button true"
+  - "org.gnome.shell.window-switcher current-workspace-only false"
+  - "org.gnome.shell.app-switcher current-workspace-only true"
 
 
     #  - [schema: "org.gnome.desktop.interface", key: "enable-hot-corners", value: "true"]
@@ -17,6 +19,9 @@ desktop_settings:
     #  - [schema: "org.gnome.desktop.wm.preferences", key: "mouse-button-modifier", value: "'<Alt>'"]
     #  - [schema: "org.gnome.desktop.wm.preferences", key: "resize-with-right-button", value: "true"]
 
-workspace_switching:
+keyboard_shortcuts:
   - "org.gnome.desktop.wm.keybindings switch-to-workspace-left \"['<Primary><Super>Left']\""
   - "org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Primary><Super>Right']\""
+  - "org.gnome.desktop.wm.keybindings move-to-workspace-left \"['<Primary><Shift><Super>Left']\""
+  - "org.gnome.desktop.wm.keybindings move-to-workspace-right \"['<Primary><Shift><Super>Right']\""
+  - "org.gnome.settings-daemon.plugins.media-keys terminal \"['<Super>Return']\""

@@ -5,3 +5,4 @@
     #    - common
     #    - m3db_client
     - gnome_setup
+    - flatpak
