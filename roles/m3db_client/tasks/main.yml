@@ -9,13 +9,12 @@
 
 - name: Install cifs packages for using samba share
   become: yes
-  apt:
+  package:
     name: cifs-utils
     state: present
-    update_cache: yes
-    cache_valid_time: 3600
 
 - name: Enable service to hopefully help cifs mount on boot
+  become: true
   ansible.builtin.systemd:
     name: systemd-networkd-wait-online
     enabled: yes

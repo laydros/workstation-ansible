@@ -2,5 +2,5 @@
   hosts: laptop
   gather_facts: true
   roles:
-    - fedora-software
-    - m3db-client
+    - common
+    - m3db_client

@@ -1,5 +1,14 @@
 ---
 # tasks file for common
+- name: Enable RPM Fusion free repository for Fedora
+  become: true
+  dnf:
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-36.noarch.rpm"
+    #name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+  when: ansible_distribution == 'Fedora'
+
+
 - name: report ansible_os_family value
   debug:
     msg: "Var ansible_os_family is set to {{ ansible_os_family }}"

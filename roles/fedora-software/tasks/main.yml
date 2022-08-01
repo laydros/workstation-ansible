@@ -1,5 +1,11 @@
 ---
 # tasks file for fedora-software
+- name: Enable RPM Fusion free repository
+  dnf:
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ansible_distribution_major_version}}.noarch.rpm"
+    state: present
+  when: ansible_distribution == 'Fedora'
+
 - name: Install basic command line tools
   become: yes
   ansible.builtin.yum: 
