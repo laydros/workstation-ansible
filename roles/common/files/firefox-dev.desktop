@@ -1,0 +1,8 @@
+[Desktop Entry]
+Name=Firefox Dev
+Comment=Web Browser
+Exec=/opt/firefox-dev/firefox %u
+Terminal=false
+Type=Application
+Icon=/opt/firefox-dev/browser/chrome/icons/default/default128.png
+Categories=Network;WebBrowser;

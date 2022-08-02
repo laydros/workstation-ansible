@@ -2,7 +2,7 @@
   hosts: laptop
   gather_facts: true
   roles:
-    #    - common
-    #    - m3db_client
+    - common
+    - m3db_client
     - gnome_setup
     - flatpak

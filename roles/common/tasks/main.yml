@@ -45,3 +45,6 @@
 
 - name: install rust by rustup and prereqs
   import_tasks: install-rust.yml
+
+- name: download and setup firefox-dev
+  import_tasks: firefox-dev.yml

@@ -10,7 +10,8 @@ desktop_settings:
   - "org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'"
   - "org.gnome.desktop.wm.preferences resize-with-right-button true"
   - "org.gnome.shell.window-switcher current-workspace-only false"
-  - "org.gnome.shell.app-switcher current-workspace-only true"
+  - "org.gnome.shell.app-switcher current-workspace-only false"
+  - "org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']"
 
 
     #  - [schema: "org.gnome.desktop.interface", key: "enable-hot-corners", value: "true"]
@@ -24,4 +25,6 @@ keyboard_shortcuts:
   - "org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Primary><Super>Right']\""
   - "org.gnome.desktop.wm.keybindings move-to-workspace-left \"['<Primary><Shift><Super>Left']\""
   - "org.gnome.desktop.wm.keybindings move-to-workspace-right \"['<Primary><Shift><Super>Right']\""
-  - "org.gnome.settings-daemon.plugins.media-keys terminal \"['<Super>Return']\""
+
+# Fedora (and presumably non-Ubuntu) don't have this built in, so it won't work
+#  - "org.gnome.settings-daemon.plugins.media-keys terminal \"['<Super>Return']\""
