@@ -25,6 +25,9 @@ keyboard_shortcuts:
   - "org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Primary><Super>Right']\""
   - "org.gnome.desktop.wm.keybindings move-to-workspace-left \"['<Primary><Shift><Super>Left']\""
   - "org.gnome.desktop.wm.keybindings move-to-workspace-right \"['<Primary><Shift><Super>Right']\""
+  - "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'"
+  - "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary><Shift>Tab'"
+  
 
 # Fedora (and presumably non-Ubuntu) don't have this built in, so it won't work
 #  - "org.gnome.settings-daemon.plugins.media-keys terminal \"['<Super>Return']\""
