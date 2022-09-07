@@ -3,7 +3,7 @@
   gather_facts: true
 
   roles:
-    - debian_software
+    #    - debian_software
     - common
     - flatpak
     - m3db_client

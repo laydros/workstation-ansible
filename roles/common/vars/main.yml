@@ -27,6 +27,7 @@ shared_pkgs:
   - irssi
   - neofetch
   - neovim
+  - meld
   - mpv
   - mupdf
   - pkg-config
