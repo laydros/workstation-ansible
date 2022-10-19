@@ -1,0 +1,64 @@
+---
+# tasks file to download and setup firefox dev
+- name: set software name
+  set_fact:
+    prog_name: firefox
+
+- name: set user folder
+  set_fact:
+    user_home: $HOME
+
+- name: set tarball name
+  set_fact:
+    tarball_name: "{{ prog_name }}.tar.bz2"
+
+- name: set destination directory
+  set_fact:
+    dest_dir: "/opt/{{ prog_name }}/"
+
+- name: set source url
+  set_fact:
+    source_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+
+- name: Download firefox dev to /tmp
+  ansible.builtin.get_url:
+    url: "{{ source_url }}"
+    dest: "/tmp/{{ tarball_name }}"
+
+- name: untar firefox dev
+  ansible.builtin.unarchive:
+    src: "/tmp/{{ tarball_name }}"
+    dest: /tmp/
+
+- name: Move firefox folder to /opt/firefox/
+  become: true
+  ansible.builtin.copy: 
+    src: "/tmp/{{ prog_name }}/" 
+    dest: "{{ dest_dir }}"
+
+- name: remove firefox tarball
+  ansible.builtin.file: 
+    path: "/tmp/{{ tarball_name }}"
+    state: absent
+  changed_when: false
+
+- name: remove unarchive folder
+  ansible.builtin.file: 
+    path: "/tmp/{{ prog_name}}/"
+    state: absent
+  changed_when: false
+
+- name: create symlink to /usr/local/bin
+  become: yes
+  ansible.builtin.file: 
+    src: "{{ dest_dir }}/{{ prog_name }}"
+    dest: "/usr/local/bin/{{ prog_name }}"
+    owner: root
+    group: root
+    state: link
+
+- name: create .desktop entry
+  ansible.builtin.copy:
+    src: "files/{{ prog_name }}.desktop"
+    dest: "{{ user_home }}/.local/share/applications/{{ prog_name }}.desktop"
+
