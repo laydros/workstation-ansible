@@ -58,6 +58,8 @@ $ systemctl enable --now supergfxd.service
 $ reboot
 ```
 
+This system tray icon allows switching Gnome power modes (which is already built into gnome) and enabling and disabling boost. [asusctltray](https://github.com/Baldomo/asusctltray)
+
 ## RPMFusion
 
 RPMFusion is a third party repository with additional commonly installed packages. Install it as follows.
@@ -92,7 +94,7 @@ $ sudo dnf --repo=rpmfusion-nonfree-tainted install "*-firmware"
 
 ## Standard software
 
-Install tools:
+Install basic tools:
 
 ```bash
 $ sudo dnf install \
@@ -104,10 +106,13 @@ $ sudo dnf install \
     ncdu \
     neovim \
     ripgrep \
+    tmux \
     tree \
     tmux \
     zsh \
 ```
+
+Install more stuff for desktop and development:
 
 ```bash
 $ sudo dnf install \
@@ -124,6 +129,7 @@ $ sudo dnf install \
     fontconfig-devel \
     libxcb-devel \
     libxkbcommon-devel \
+    foot \
     g++ \
     gcc \
     gcc-c++ \
@@ -134,16 +140,16 @@ $ sudo dnf install \
     kernel-devel \
     neofetch \
     make \
-    meld \
     mpv \
     mupdf \
     oksh \
     pkg-config \
     syncthing \
     tealdeer \
-    torbrowser-launcher \
     yt-dlp 
 ```
+
+Use [this link](https://yadm.io/docs/install) for instructions to install yadm
 
 ## Flathub
 
@@ -189,22 +195,25 @@ To install a starter set of GNOME & GNOME-related applications:
 
 ```bash
 $ flatpak install flathub \
-    org.gnome.TextEditor \
+    com.github.tchx84.Flatseal \
+    com.mattjakeman.ExtensionManager \
+    com.transmissionbt.Transmission \
+    com.usebottles.bottles \
+    io.github.celluloid_player.Celluloid \
+    org.gnome.Boxes \
+    org.gnome.baobab \
+    org.gnome.Calendar \
+    org.gnome.Cheese \
+    org.gnome.EasyTAG
     org.gnome.Evince \
     org.gnome.eog \
-    org.gnome.Cheese \
-    org.gnome.SoundRecorder \
-    io.github.celluloid_player.Celluloid \
-    org.gnome.Lollypop \
-    org.gnome.Geary \
-    org.gnome.Calendar \
-    org.gnome.baobab \
     org.gnome.Firmware \
-    org.gnome.Boxes \
-    com.usebottles.bottles \
-    com.github.tchx84.Flatseal \
-    com.transmissionbt.Transmission \
-    com.mattjakeman.ExtensionManager
+    org.gnome.Geary \
+    org.gnome.Lollypop \
+    org.gnome.meld \
+    org.gnome.SoundRecorder \
+    org.gnome.TextEditor 
+    
 ```
 
 ## GNOME Extensions
@@ -217,6 +226,8 @@ Some popular ones include the following.
 * [AppIndicator and KStatusNotifierItem Support](https://extensions.gnome.org/extension/615/appindicator-support/)
 * [Just Perfection](https://extensions.gnome.org/extension/3843/just-perfection/)
 * [Burn My Windows](https://extensions.gnome.org/extension/4679/burn-my-windows/)
+* [Power Profiles Indicator](https://extensions.gnome.org/extension/5335/power-profile-indicator/)
+* [supergfxctl-gex](https://extensions.gnome.org/extension/5344/supergfxctl-gex/)
 
 ## Pop Shell
 
@@ -275,15 +286,19 @@ Install any other software you like, as well. For example:
 $ flatpak install flathub \
     ch.protonmail.protonmail-bridge \
     com.bitwarden.desktop \
-    com.github.marktext.marktext \
     com.discordapp.Discord \
-    org.signal.Signal \
+    com.github.marktext.marktext \
+    com.github.micahflee.torbrowser-launcher \
+    com.plexamp.Plexamp \
+    com.spotify.Client \
+    com.vscodium.codium \
+    fr.handbrake.ghb \
+    im.riot.Riot \
     io.gitlab.librewolf-community \
+    org.ferdium.Ferdium \
     org.musicbrainz.Picard \
     org.remmina.Remmina \
-    im.riot.Riot \
-    com.spotify.Client \
-    com.vscodium.codium
+    org.signal.Signal
 ```
 
 ## Steam, Proton, Lutris, Gamemode, & MangoHud
