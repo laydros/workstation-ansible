@@ -24,7 +24,7 @@ You may consider replacing it with an Intel AX200 or Intel AX210 instead, for pl
 
 Secure Boot must be disabled in order for kernel arguments to be respected.
 
-## Fixing Random Crashing
+## Fixing Random Crashing - HAVEN'T USED YET
 
 There is an open issue [here](https://gitlab.freedesktop.org/drm/amd/-/issues/2068) regarding random freezes with the 6900HS / 6800HS hardware. As a workaround:
 
@@ -109,7 +109,7 @@ $ sudo dnf install \
     tmux \
     tree \
     tmux \
-    zsh \
+    zsh
 ```
 
 Install more stuff for desktop and development:
@@ -258,7 +258,75 @@ $ rpm-ostree install gvfs-nfs
 $ reboot
 ```
 
+## GNOME Preferences
+
+## get gsettings
+
+`gsettings list-recursively`
+
+## gnome application switcher scope
+
+You can change the scope of the window switcher (Alt-Tab) from current workspace only to all workspaces with the command:
+
+```
+gsettings set org.gnome.shell.window-switcher current-workspace-only false
+```
+
+You can change the scope of the application switcher (Alt-backtick) from all workspaces to current workspace only with the command:
+
+```
+gsettings set org.gnome.shell.app-switcher current-workspace-only true
+```
+
+Use the same commands, replacing set with reset and leaving out the argument (e.g. false) to reset the setting to default. You can also use the graphical tool dconf-editor (not installed by default) to change these settings.
+
+- Keyboard & Mouse
+  
+  - turn on Emacs Input (maybe quit this?)
+    `gsettings set org.gnome.desktop.interface gtk-key-theme Emacs`
+  - Mouse Click Emulation - set to fingers
+    `gsettings set org.gnome.desktop.peripherals.touchpad click-method 'fingers'`
+
+- Topbar
+  
+  - turn on Activities Overview Hot Corner
+    `gsettings set org.gnome.desktop.interface enable-hot-corners true`
+  
+  - turn on Battery Percentage
+    `gsettings set org.gnome.desktop.interface show-battery-percentage true`
+
+- Windows
+  
+  - show minimize button 
+    `gsettings set org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'`
+  - use Alt as resize button
+    `gsettings set org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'`
+  - turn on Resize with Secondary-Click
+    `gsettings set org.gnome.desktop.wm.preferences resize-with-right-button true`
+
+- dash to dock
+  
+  - icon size
+    `gsettings set org.gnome.shell.extensions.dash-to-dock dash-max-icon-size 36`
+  - dock on left
+    `org.gnome.shell.extensions.dash-to-dock dock-position 'LEFT'`
+
+## screenshot directory
+
+`gsettings set org.gnome.gnome-screenshot auto-save-directory '$HOME/img/scrot'`
+
+
 ## Rebind Keys
+
+- desktop switching
+  `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Primary><Super>Left']"`
+  `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Primary><Super>Right']"`
+  `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Primary><Shift><Super>Left']"`
+  `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Primary><Shift><Super>Right']"`
+
+- allow ctrl-tab switching tabs in gnome-terminal
+  - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'`
+  - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary><Shift>Tab'`
 
 Modifications can be made to the default keyboard layout using `gsettings`. For example, the below command binds the Caps Lock key to Control, and toggles Caps Lock if both Shift keys are pressed simultaneously.
 
