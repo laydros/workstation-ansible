@@ -249,6 +249,17 @@ Use the same commands, replacing set with reset and leaving out the argument (e.
   - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']"`
   - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']"`
 
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>6']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>7']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"`
+
 - allow ctrl-tab switching tabs in gnome-terminal
   - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'`
   - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary><Shift>Tab'`
@@ -279,9 +290,12 @@ Install any other software you like, as well. For example:
 $ flatpak install flathub \
     ch.protonmail.protonmail-bridge \
     com.bitwarden.desktop \
+    com.calbre_ebook.calibre \
     com.discordapp.Discord \
+    com.github.johnfactotum.Foliate \
     com.github.marktext.marktext \
     com.github.micahflee.torbrowser-launcher \
+    com.notepadqq.Notepadqq \
     com.plexamp.Plexamp \
     com.spotify.Client \
     com.vscodium.codium \
@@ -290,6 +304,7 @@ $ flatpak install flathub \
     io.gitlab.librewolf-community \
     org.ferdium.Ferdium \
     org.musicbrainz.Picard \
+    org.qutebrowser.qutebrowser \
     org.remmina.Remmina \
     org.signal.Signal
 ```
