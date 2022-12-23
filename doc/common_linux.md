@@ -24,7 +24,6 @@ $ xdg-user-dirs-update --set PICTURES $HOME/media/img
 $ xdg-user-dirs-update --set VIDEOS $HOME/media/video
 ```
 
-
 ## Standard software
 
 Install basic tools:
@@ -84,6 +83,12 @@ $ sudo dnf install \
 
 Use [this link](https://yadm.io/docs/install) for instructions to install yadm
 
+## Adjust clock for dual booting with Windows
+
+```bash
+$ timedatectl set-local-rtc 1
+```
+
 ## Flathub
 
 To get a wider variety of software, and more up to date packages, replace the Fedora Flatpak repository with Flathub.
@@ -133,7 +138,6 @@ $ flatpak install flathub \
     org.gnome.meld \
     org.gnome.SoundRecorder \
     org.gnome.TextEditor 
-    
 ```
 
 ## GNOME Extensions
@@ -232,6 +236,18 @@ Use the same commands, replacing set with reset and leaving out the argument (e.
   `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Primary><Super>Right']"`
   `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Primary><Shift><Super>Left']"`
   `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Primary><Shift><Super>Right']"`
+
+- sway/i3 like desktop switching and moving
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>7']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>8']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']"`
+  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']"`
 
 - allow ctrl-tab switching tabs in gnome-terminal
   - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'`

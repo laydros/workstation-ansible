@@ -41,6 +41,12 @@ $ grep -q 'acpi-cpufreq' /sys/devices/system/cpu/cpu0/cpufreq/scaling_driver && 
 
 If the output says `success`, you should no longer be prone to frequent crashes.
 
+## Adjust clock for dual booting with Windows
+
+```bash
+$ timedatectl set-local-rtc 1
+```
+
 ## Asus Linux Repo
 
 Add the Asus Linux repository for additional necessary software.
