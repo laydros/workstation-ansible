@@ -326,33 +326,37 @@ Use the same commands, replacing set with reset and leaving out the argument (e.
 ## Rebind Keys
 
 - desktop switching
-  `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Primary><Super>Left']"`
-  `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Primary><Super>Right']"`
-  `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Primary><Shift><Super>Left']"`
-  `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Primary><Shift><Super>Right']"`
+```bash
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-left "['<Primary><Super>Left']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-right "['<Primary><Super>Right']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-left "['<Primary><Shift><Super>Left']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-right "['<Primary><Shift><Super>Right']"
+```
 
 - sway/i3 like desktop switching and moving
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>7']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>8']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']"`
+```bash
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-1 "['<Super>1']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-2 "['<Super>2']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-3 "['<Super>3']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-4 "['<Super>4']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-5 "['<Super>5']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-6 "['<Super>6']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-7 "['<Super>7']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-8 "['<Super>8']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-9 "['<Super>9']"
+  gsettings set org.gnome.desktop.wm.keybindings switch-to-workspace-10 "['<Super>0']"
 
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>6']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>7']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"`
-  - `gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"`
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-1 "['<Shift><Super>1']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-2 "['<Shift><Super>2']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-3 "['<Shift><Super>3']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-4 "['<Shift><Super>4']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-5 "['<Shift><Super>5']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-6 "['<Shift><Super>6']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-7 "['<Shift><Super>7']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Shift><Super>8']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Shift><Super>9']"
+  gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Shift><Super>1']"
+```
 
 - allow ctrl-tab switching tabs in gnome-terminal
   - `gsettings set org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'`
