@@ -1,48 +1,19 @@
 ---
 # tasks file for software
-- name: Install basic command line tools
-  become: yes
-  apt: 
-    pkg:
-      - aria2
-      - bat
-      - build-essential
-      - curl
-      - detox
-      - exa
-      - ffmpeg
-      - flatpak
-      - git
-      - gnome-software-plugin-flatpak
-      - htop
-      - irssi
-      - ncdu
-      - neovim
-      - ripgrep
-      - tldr
-      - tree
-      - tmux
-      - yadm
-      - zsh
+
+- name: Install packages using APT on Debian systems
+  become: true
+  apt:
+    name: "{{ item }}"
     state: present
     update_cache: yes
-    cache_valid_time: 3600
+  loop: "{{ apt_packages }}"
+  when: ansible_os_family == 'Debian'
 
-- name: Setup Flathub remote for flatpak
-  community.general.flatpak_remote:
-    name: flathub
+- name: Install packages using Homebrew on macOS
+  community.general.homebrew:
+    name: "{{ item }}"
     state: present
-    flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
-    method: user
+  loop: "{{ homebrew_packages }}"
+  when: ansible_os_family == 'Darwin'
 
-- name: Add flatpak packages
-  community.general.flatpak: name={{item}} state=present method=user
-  with_items:
-    - org.musicbrainz.Picard
-    - com.transmissionbt.Transmission
-    - com.github.tchx84.Flatseal
-    - com.mattermost.Desktop
-    - com.bitwarden.desktop
-    - com.spotify.client
-    - ch.protonmail.protonmail-bridge
-    - org.libreoffice.LibreOffice
