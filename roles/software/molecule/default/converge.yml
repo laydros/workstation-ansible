@@ -1,0 +1,10 @@
+---
+- name: Converge
+  hosts: all
+  become: true
+  vars:
+    install_rust: false
+    install_firefox: false
+    install_firefox_dev: false
+  roles:
+    - role: software

@@ -66,3 +66,31 @@ This repository is a work in progress. Some ideas to align the layout with Ansib
 - Use tags and handlers consistently so pieces can be executed independently.
 - Consider a `playbooks/` directory for the entry point playbooks to keep the root tidy.
 - Gradually convert manual steps from the `doc/` directory into automated tasks.
+
+## Development Setup and Testing
+
+These steps assume you are working within a Python virtual environment:
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+
+# Install required Ansible collections
+ansible-galaxy collection install -r requirements.yml
+```
+
+Run linting and syntax checks:
+
+```bash
+ansible-lint
+yamllint .
+ansible-playbook playbooks/site.yml --syntax-check
+```
+
+Execute the test suite:
+
+```bash
+ansible-playbook tests/test_all.yml --check -i inventory/hosts.yml
+cd roles/software && molecule test
+```
