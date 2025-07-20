@@ -1,1 +1,11 @@
 install_m3db: true
+flatpak_apps:
+    - ch.protonmail.protonmail-bridge
+    - com.bitwarden.desktop
+    - com.github.marktext.marktext
+    - com.github.micahflee.torbrowser-launcher
+    - com.github.tchx84.Flatseal
+    - com.spotify.client
+    - org.libreoffice.LibreOffice
+    - org.remmina.Remmina
+    - org.signal.Signal
