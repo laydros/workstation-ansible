@@ -1,18 +1,18 @@
 ---
 # yamllint disable rule:line-length
 # vars file for gnome_setup
-gnome_pkgs:
+gnome_setup_pkgs:
   - gnome-tweaks
 
-desktop_settings:
-  - "org.gnome.desktop.interface enable-hot-corners true"
-  - "org.gnome.desktop.interface show-battery-percentage true"
-  - "org.gnome.desktop.wm.preferences button-layout ':minimize,maximize,close'"
-  - "org.gnome.desktop.wm.preferences mouse-button-modifier '<Alt>'"
-  - "org.gnome.desktop.wm.preferences resize-with-right-button true"
-  - "org.gnome.shell.window-switcher current-workspace-only false"
-  - "org.gnome.shell.app-switcher current-workspace-only false"
-  - "org.gnome.desktop.input-sources xkb-options ['caps:ctrl_modifier']"
+gnome_setup_desktop_settings:
+  - {schema: "org.gnome.desktop.interface", key: "enable-hot-corners", value: true}
+  - {schema: "org.gnome.desktop.interface", key: "show-battery-percentage", value: true}
+  - {schema: "org.gnome.desktop.wm.preferences", key: "button-layout", value: ":minimize,maximize,close"}
+  - {schema: "org.gnome.desktop.wm.preferences", key: "mouse-button-modifier", value: "<Alt>"}
+  - {schema: "org.gnome.desktop.wm.preferences", key: "resize-with-right-button", value: true}
+  - {schema: "org.gnome.shell.window-switcher", key: "current-workspace-only", value: false}
+  - {schema: "org.gnome.shell.app-switcher", key: "current-workspace-only", value: false}
+  - {schema: "org.gnome.desktop.input-sources", key: "xkb-options", value: "['caps:ctrl_modifier']"}
 
 
   #  - [schema: "org.gnome.desktop.interface", key: "enable-hot-corners", value: "true"]
@@ -21,14 +21,14 @@ desktop_settings:
   #  - [schema: "org.gnome.desktop.wm.preferences", key: "mouse-button-modifier", value: "'<Alt>'"]
   #  - [schema: "org.gnome.desktop.wm.preferences", key: "resize-with-right-button", value: "true"]
 
-keyboard_shortcuts:
-  - "org.gnome.desktop.wm.keybindings switch-to-workspace-left \"['<Primary><Super>Left']\""
-  - "org.gnome.desktop.wm.keybindings switch-to-workspace-right \"['<Primary><Super>Right']\""
-  - "org.gnome.desktop.wm.keybindings move-to-workspace-left \"['<Primary><Shift><Super>Left']\""
-  - "org.gnome.desktop.wm.keybindings move-to-workspace-right \"['<Primary><Shift><Super>Right']\""
-  - "org.gnome.mutter.keybindings switch-monitor '<Shift><Super>p'"
-  - "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ next-tab '<Primary>Tab'"
-  - "org.gnome.Terminal.Legacy.Keybindings:/org/gnome/terminal/legacy/keybindings/ prev-tab '<Primary><Shift>Tab'"
+gnome_setup_keyboard_shortcuts:
+  - {schema: "org.gnome.desktop.wm.keybindings", key: "switch-to-workspace-left", value: "['<Primary><Super>Left']"}
+  - {schema: "org.gnome.desktop.wm.keybindings", key: "switch-to-workspace-right", value: "['<Primary><Super>Right']"}
+  - {schema: "org.gnome.desktop.wm.keybindings", key: "move-to-workspace-left", value: "['<Primary><Shift><Super>Left']"}
+  - {schema: "org.gnome.desktop.wm.keybindings", key: "move-to-workspace-right", value: "['<Primary><Shift><Super>Right']"}
+  - {schema: "org.gnome.mutter.keybindings", key: "switch-monitor", value: "<Shift><Super>p"}
+  - {schema: "org.gnome.Terminal.Legacy.Keybindings", path: "/org/gnome/terminal/legacy/keybindings/", key: "next-tab", value: "<Primary>Tab"}
+  - {schema: "org.gnome.Terminal.Legacy.Keybindings", path: "/org/gnome/terminal/legacy/keybindings/", key: "prev-tab", value: "<Primary><Shift>Tab"}
 
 
 # Fedora (and presumably non-Ubuntu) don't have this built in, so it won't work

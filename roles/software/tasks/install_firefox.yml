@@ -1,31 +1,32 @@
 ---
 # tasks file to download and setup firefox dev
-- name: set software name
-  set_fact:
+- name: Set software name
+  ansible.builtin.set_fact:
     prog_name: firefox
 
-- name: set user folder
-  set_fact:
+- name: Set user folder
+  ansible.builtin.set_fact:
     user_home: $HOME
 
-- name: set tarball name
-  set_fact:
+- name: Set tarball name
+  ansible.builtin.set_fact:
     tarball_name: "{{ prog_name }}.tar.bz2"
 
-- name: set destination directory
-  set_fact:
+- name: Set destination directory
+  ansible.builtin.set_fact:
     dest_dir: "/opt/{{ prog_name }}/"
 
-- name: set source url
-  set_fact:
+- name: Set source url
+  ansible.builtin.set_fact:
     source_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"  # yamllint disable-line rule:line-length
 
 - name: Download firefox dev to /tmp
   ansible.builtin.get_url:
     url: "{{ source_url }}"
     dest: "/tmp/{{ tarball_name }}"
+    mode: '0644'
 
-- name: untar firefox dev
+- name: Untar firefox dev
   ansible.builtin.unarchive:
     src: "/tmp/{{ tarball_name }}"
     dest: /tmp/
@@ -34,28 +35,34 @@
   ansible.builtin.copy:
     src: "/tmp/{{ prog_name }}/"
     dest: "{{ dest_dir }}"
+    owner: root
+    group: root
+    mode: '0755'
 
-- name: remove firefox tarball
+- name: Remove firefox tarball
   ansible.builtin.file:
     path: "/tmp/{{ tarball_name }}"
     state: absent
   changed_when: false
 
-- name: remove unarchive folder
+- name: Remove unarchive folder
   ansible.builtin.file:
-    path: "/tmp/{{ prog_name}}/"
+    path: "/tmp/{{ prog_name }}/"
     state: absent
   changed_when: false
 
-- name: create symlink to /usr/local/bin
+- name: Create symlink to /usr/local/bin
   ansible.builtin.file:
     src: "{{ dest_dir }}/{{ prog_name }}"
     dest: "/usr/local/bin/{{ prog_name }}"
-  owner: root
-  group: root
-  state: link
+    owner: root
+    group: root
+    state: link
 
-- name: create .desktop entry
+- name: Create .desktop entry
   ansible.builtin.copy:
     src: "{{ prog_name }}.desktop"
     dest: "{{ user_home }}/.local/share/applications/{{ prog_name }}.desktop"
+    owner: "{{ ansible_user_id }}"
+    group: "{{ ansible_user_gid | default(ansible_user_id) }}"
+    mode: '0644'

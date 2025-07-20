@@ -14,49 +14,49 @@
       check_mode: true
   tasks:
     - name: Check rustup installed
-      stat:
+      ansible.builtin.stat:
         path: "{{ ansible_env.HOME }}/.cargo/bin/rustup"
       register: rustup_bin
       when: install_rust | default(false)
 
     - name: Assert rustup present
-      assert:
+      ansible.builtin.assert:
         that: rustup_bin.stat.exists
         fail_msg: "rustup not installed"
         success_msg: "rustup installed"
       when: install_rust | default(false)
 
     - name: Check bat or batcat is available
-      shell: "command -v bat || command -v batcat"
+      ansible.builtin.shell: "command -v bat || command -v batcat"
       register: bat_cmd
       changed_when: false
 
     - name: Assert bat exists
-      assert:
+      ansible.builtin.assert:
         that: bat_cmd.rc == 0
         fail_msg: "bat/batcat not installed"
         success_msg: "bat is installed"
 
     - name: Check ripgrep installed
-      command: command -v rg
+      ansible.builtin.command: command -v rg
       register: rg_cmd
       changed_when: false
 
     - name: Assert ripgrep exists
-      assert:
+      ansible.builtin.assert:
         that: rg_cmd.rc == 0
         fail_msg: "ripgrep not installed"
         success_msg: "ripgrep is installed"
 
     - name: Verify flatpak apps registered
-      stat:
+      ansible.builtin.stat:
         path: "{{ ansible_env.HOME }}/.local/share/flatpak/app/{{ item }}"
       loop: "{{ flatpak_apps }}"
       register: flatpak_results
       when: flatpak_apps is defined and flatpak_apps | length > 0
 
     - name: Assert all flatpak apps registered
-      assert:
+      ansible.builtin.assert:
         that: "flatpak_results.results | map(attribute='stat.exists') | min"
         fail_msg: "one or more flatpak apps missing"
         success_msg: "flatpak apps registered"

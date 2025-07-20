@@ -1,32 +1,32 @@
 ---
 - name: Set current OS key
-  set_fact:
+  ansible.builtin.set_fact:
     current_os: "{{ ansible_os_family }}"
 
 - name: Set package list
-  set_fact:
-    pkg_common: "{{ packages.common | default([]) }}"
-    pkg_shared: "{{ packages.shared | default([]) }}"
-    pkg_distro: "{{ packages.os_specific[current_os].distro_pkgs | default([]) }}"  # yamllint disable-line rule:line-length
-    pkg_rust: "{{ packages.os_specific[current_os].rust_pkgs | default([]) }}"
-    pkg_cask: "{{ packages.os_specific[current_os].brew_cask | default([]) }}"
-  when: packages is defined
+  ansible.builtin.set_fact:
+    pkg_common: "{{ software_packages.common | default([]) }}"
+    pkg_shared: "{{ software_packages.shared | default([]) }}"
+    pkg_distro: "{{ software_packages.os_specific[current_os].distro_pkgs | default([]) }}"  # yamllint disable-line rule:line-length
+    pkg_rust: "{{ software_packages.os_specific[current_os].rust_pkgs | default([]) }}"
+    pkg_cask: "{{ software_packages.os_specific[current_os].brew_cask | default([]) }}"
+  when: software_packages is defined
 
 - name: Set up Fedora package repositories
-  import_tasks: setup_fedora_repos.yml
+  ansible.builtin.import_tasks: setup_fedora_repos.yml
   when: ansible_distribution == "Fedora"
 
 - name: Install common + shared packages
   vars:
     effective_name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"  # yamllint disable-line rule:line-length
-  package:
+  ansible.builtin.package:
     name: "{{ effective_name }}"
     state: present
   loop: "{{ pkg_common + pkg_shared }}"
   when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
 - name: Install distro-specific packages
-  package:
+  ansible.builtin.package:
     name: "{{ item }}"
     state: present
   loop: "{{ pkg_distro }}"
@@ -61,17 +61,17 @@
 
 
 - name: Install Rust
-  import_tasks: install_rust.yml
+  ansible.builtin.import_tasks: install_rust.yml
   when: install_rust
 
 - name: Install Firefox
-  import_tasks: install_firefox.yml
+  ansible.builtin.import_tasks: install_firefox.yml
   when:
     - install_firefox
     - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
 - name: Install Firefox Developer Edition
-  import_tasks: install_firefox_dev.yml
+  ansible.builtin.import_tasks: install_firefox_dev.yml
   when:
     - install_firefox_dev
     - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
