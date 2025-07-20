@@ -15,13 +15,13 @@
 - name: Update XDG user dirs
   command: >
     xdg-user-dirs-update --set {{item.key}} {{item.value}}
-  loop:
-    - { key: DESKTOP,      value: "$HOME/doc/desktop" }
-    - { key: DOWNLOAD,     value: "$HOME/dl" }
-    - { key: TEMPLATES,    value: "$HOME/doc/desktop" }
-    - { key: PUBLICSHARE,  value: "$HOME/doc/desktop" }
-    - { key: DOCUMENTS,    value: "$HOME/doc" }
-    - { key: MUSIC,        value: "$HOME/music" }
-    - { key: PICTURES,     value: "$HOME/media/img" }
-    - { key: VIDEOS,       value: "$HOME/media/video" }
+    loop:
+      - {key: DESKTOP, value: "$HOME/doc/desktop"}
+      - {key: DOWNLOAD, value: "$HOME/dl"}
+      - {key: TEMPLATES, value: "$HOME/doc/desktop"}
+      - {key: PUBLICSHARE, value: "$HOME/doc/desktop"}
+      - {key: DOCUMENTS, value: "$HOME/doc"}
+      - {key: MUSIC, value: "$HOME/music"}
+      - {key: PICTURES, value: "$HOME/media/img"}
+      - {key: VIDEOS, value: "$HOME/media/video"}
   when: ansible_os_family in ["Debian", "RedHat", "Archlinux"]

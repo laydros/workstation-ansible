@@ -10,7 +10,7 @@
 
 - name: set source url
   set_fact:
-    source_url: "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US"
+    source_url: "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=linux64&lang=en-US"  # yamllint disable-line rule:line-length
 
 - name: Download firefox dev to /tmp
   ansible.builtin.get_url:
@@ -24,7 +24,7 @@
 
 - name: Move firefox folder to /opt/firefox-dev/
   ansible.builtin.copy:
-    src: /tmp/firefox/ 
+    src: /tmp/firefox/
     dest: "{{ dest_dir }}"
 
 - name: remove firefox tarball

@@ -1,6 +1,6 @@
 ---
 - name: Enable RPM Fusion free repository for Fedora
   dnf:
-    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"
+    name: "https://mirrors.rpmfusion.org/free/fedora/rpmfusion-free-release-{{ ansible_distribution_major_version }}.noarch.rpm"  # yamllint disable-line rule:line-length
     state: present
   when: ansible_distribution == "Fedora"

@@ -1,3 +1,4 @@
+---
 - name: Personal Linux systems
   hosts: personal_linux
   become: true
