@@ -59,6 +59,6 @@
 
 - name: create .desktop entry
   ansible.builtin.copy:
-    src: "files/{{ prog_name }}.desktop"
+    src: "{{ prog_name }}.desktop"
     dest: "{{ user_home }}/.local/share/applications/{{ prog_name }}.desktop"
 
