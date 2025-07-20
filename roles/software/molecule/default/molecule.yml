@@ -6,10 +6,23 @@ driver:
   name: docker
 
 platforms:
-  - name: instance
-    image: debian:bullseye
+  - name: debian-bookworm
+    image: geerlingguy/docker-debian12-ansible:latest
     command: /lib/systemd/systemd
     privileged: true
+    pre_build_image: true
+
+  - name: fedora-39
+    image: geerlingguy/docker-fedora39-ansible:latest
+    command: /usr/lib/systemd/systemd
+    privileged: true
+    pre_build_image: true
+
+  - name: archlinux
+    image: geerlingguy/docker-archlinux-ansible:latest
+    command: /usr/lib/systemd/systemd
+    privileged: true
+    pre_build_image: true
 
 provisioner:
   name: ansible

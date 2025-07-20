@@ -80,6 +80,9 @@ pip install -r requirements-dev.txt
 ansible-galaxy collection install -r requirements.yml
 ```
 
+Ensure Docker is installed and that your user can run containers (typically by
+being in the `docker` group).
+
 Run linting and syntax checks:
 
 ```bash
@@ -92,7 +95,7 @@ Execute the test suite:
 
 ```bash
 ansible-playbook tests/test_all.yml --check -i inventory/hosts.yml
-cd roles/software && molecule test
+cd roles/software && molecule test  # runs against Debian, Fedora, and Arch containers
 ```
 
 ## Developer & Agent Docs
