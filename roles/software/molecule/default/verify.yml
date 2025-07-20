@@ -1,0 +1,20 @@
+---
+- name: Verify
+  hosts: all
+  gather_facts: false
+  tasks:
+    - name: Check bat installed
+      command: bash -c 'command -v batcat || command -v bat'
+      register: bat_check
+      changed_when: false
+    - assert:
+        that: bat_check.rc == 0
+        fail_msg: "bat not installed"
+
+    - name: Check ripgrep installed
+      command: command -v rg
+      register: rg_check
+      changed_when: false
+    - assert:
+        that: rg_check.rc == 0
+        fail_msg: "ripgrep not installed"
