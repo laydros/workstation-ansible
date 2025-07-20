@@ -2,4 +2,4 @@
   hosts: laptop
   gather_facts: true
   roles:
-    - mac-software
+    - software

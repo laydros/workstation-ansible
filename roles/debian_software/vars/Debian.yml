@@ -1,9 +1,0 @@
----
-# The Debian releases that have backports repositories
-backports_base_uri: "https://deb.debian.org/debian"
-backports_components: "{{ ansible_distribution_release }}-backports main contrib non-free"
-backports_prereqs:
-  - apt-transport-https
-supported_releases:
-  - buster
-  - bullseye
