@@ -13,20 +13,9 @@
     state: present
     flatpakrepo_url: https://dl.flathub.org/repo/flathub.flatpakrepo
 
-- name: Add flatpak packages
-  community.general.flatpak: name={{ item }} state=present method=user
-  with_items:
-    - ch.protonmail.protonmail-bridge
-    - com.bitwarden.desktop
-    - com.calibre_ebook.calibre
-    - com.github.marktext.marktext
-    - com.github.micahflee.torbrowser-launcher
-    - com.github.tchx84.Flatseal
-    - com.spotify.client
-    - com.transmissionbt.Transmission
-    - io.gitlab.librewolf-community
-    - org.gnome.EasyTAG
-    - org.libreoffice.LibreOffice
-    - org.musicbrainz.Picard
-    - org.remmina.Remmina
-    - org.signal.Signal
+- name: Install Flatpak apps
+  community.general.flatpak:
+    name: "{{ item }}"
+    state: present
+    method: user
+  loop: "{{ flatpak_apps | default([]) }}"
