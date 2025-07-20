@@ -1,6 +1,9 @@
+<!-- AI_AGENT_GUIDANCE: This file provides AI agents with instructions on interacting with this codebase. -->
+
 # AGENTS.md
 
-This file defines how AI agents (such as Codex, Copilot Agents, or Continue) should interact with this Ansible project. It provides an overview of roles, expected variables, and project conventions to ensure intelligent modifications align with the intended structure and behavior.
+## Introduction
+This repository uses Ansible to configure personal and work computers. AI agents should consult this guide before modifying the codebase. It explains roles, variables and conventions so changes remain consistent.
 
 ---
 
@@ -99,3 +102,43 @@ The project is in a clean state post-refactor. Agents should:
 ## ✍️ Maintainer Note
 
 This repository is actively used to manage a mix of personal and work systems. AI agents should assume that consistency, readability, and predictability are more important than overly clever automation.
+
+---
+
+## Project Structure
+- `playbooks/` contains entry point playbooks such as `site.yml`.
+- `roles/` holds Ansible roles (`software`, `flatpak`, `gnome_setup`, `m3db_client`, `xdg_dirs`).
+- `inventory/` defines host groups in `hosts.yml`.
+- `group_vars/` stores group variable files.
+- `tests/` contains example playbook tests.
+- `doc/` holds assorted notes.
+
+## Build & Run
+Development typically uses a Python virtual environment:
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+pip install -r requirements-dev.txt
+ansible-galaxy collection install -r requirements.yml
+```
+Validate and execute playbooks:
+```bash
+ansible-lint
+yamllint .
+ansible-playbook playbooks/site.yml --syntax-check
+ansible-playbook tests/test_all.yml --check -i inventory/hosts.yml
+cd roles/software && molecule test
+```
+
+## Code Guidelines
+See [CONVENTIONS.md](CONVENTIONS.md) for style and best practices.
+
+## Contribution Workflow
+1. Create a feature branch.
+2. Make focused commits with clear messages.
+3. Open a pull request targeting `main` and describe your changes.
+
+## Related Docs
+- [README.md](README.md)
+- [CONVENTIONS.md](CONVENTIONS.md)
+
