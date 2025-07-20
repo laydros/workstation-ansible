@@ -25,11 +25,21 @@ ansible-playbook -i hosts mac-based.yml     -c local -K
 
 Each directory under `roles/` contains an Ansible role. Highlights include:
 
-- **common** – basic command line tools, Rust installation, and Firefox setup.
+- **common** – legacy base packages role now superseded by `software`.
 - **flatpak** – installs flatpak and a selection of desktop applications from Flathub.
 - **gnome_setup** – configures GNOME settings and keyboard shortcuts.
 - **m3db_client** – optional setup for mounting a network share.
-- **software** – unified package installation role for Debian, Fedora, and macOS.
+- **software** – unified package installation role for Debian, Fedora, and macOS. Optional tasks install Rust and Firefox.
+
+### Optional installs
+
+Set these variables in `group_vars/all.yml` to control which extras the `software` role installs:
+
+```yaml
+install_rust: true
+install_firefox: true
+install_firefox_dev: false
+```
 
 Role READMEs currently contain only scaffolding text.
 

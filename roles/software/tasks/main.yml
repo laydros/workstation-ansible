@@ -28,12 +28,6 @@
   loop: "{{ pkg_distro }}"
   when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
-- name: Install Rust pre-req packages
-  package:
-    name: "{{ item }}"
-    state: present
-  loop: "{{ pkg_rust }}"
-  when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
 # macOS Homebrew
 - name: Update Homebrew
@@ -62,3 +56,19 @@
   loop: "{{ pkg_cask }}"
   when: ansible_os_family == "Darwin"
 
+
+- name: Install Rust
+  import_tasks: install_rust.yml
+  when: install_rust
+
+- name: Install Firefox
+  import_tasks: install_firefox.yml
+  when:
+    - install_firefox
+    - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
+
+- name: Install Firefox Developer Edition
+  import_tasks: install_firefox_dev.yml
+  when:
+    - install_firefox_dev
+    - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']

@@ -51,6 +51,6 @@
 
 - name: create .desktop entry
   ansible.builtin.copy:
-    src: files/firefox-dev.desktop
-    dest: $HOME/.local/share/applications/firefox-dev.desktop
+    src: firefox-dev.desktop
+    dest: "{{ ansible_env.HOME }}/.local/share/applications/firefox-dev.desktop"
 

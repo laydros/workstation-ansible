@@ -1,0 +1,25 @@
+---
+# tasks file to install rustup
+- name: Check for existing rustup installation
+  stat:
+    path: "{{ ansible_env.HOME }}/.cargo/bin/rustup"
+  register: rustup_check
+
+- name: Install rust prerequisites
+  become: true
+  package:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pkg_rust }}"
+  when:
+    - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
+    - not rustup_check.stat.exists
+
+- name: install rust by rustup
+  shell: |
+    set -o pipefail
+    curl --proto '=https' --tlsv1.2 https://sh.rustup.rs -sSf | sh -s -- -y
+  args:
+    creates: "{{ ansible_env.HOME }}/.cargo/bin/rustup"
+    executable: /bin/bash
+  when: not rustup_check.stat.exists

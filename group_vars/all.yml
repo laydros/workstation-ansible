@@ -1,0 +1,3 @@
+install_rust: true
+install_firefox: true
+install_firefox_dev: false
