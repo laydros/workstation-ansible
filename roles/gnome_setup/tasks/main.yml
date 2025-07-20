@@ -2,23 +2,30 @@
 # tasks file for gnome_setup
 
 - name: Install gnome stuff for Fedora
-  dnf:
+  ansible.builtin.dnf:
     name:
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-dash-to-dock
     state: present
   when: ansible_distribution == 'Fedora'
 
-- name: install gnome tweaks
+- name: Install gnome tweaks
   ansible.builtin.package:
-    name: "{{ item }}"
+    name: "{{ gnome_setup_pkgs }}"
     state: present
-  with_items: "{{ gnome_pkgs }}"
 
 - name: Set desktop gsettings
-  command: gsettings set {{ item }}
-  with_items: "{{ desktop_settings }}"
+  community.general.gsettings:
+    schema: "{{ item.schema }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    path: "{{ item.path | default(omit) }}"
+  loop: "{{ gnome_setup_desktop_settings }}"
 
 - name: Set workspace switching keyboard shortcuts
-  command: gsettings set {{ item }}
-  with_items: "{{ keyboard_shortcuts }}"
+  community.general.gsettings:
+    schema: "{{ item.schema }}"
+    key: "{{ item.key }}"
+    value: "{{ item.value }}"
+    path: "{{ item.path | default(omit) }}"
+  loop: "{{ gnome_setup_keyboard_shortcuts }}"

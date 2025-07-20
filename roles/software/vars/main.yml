@@ -1,7 +1,7 @@
 ---
 # roles/software/vars/main.yml
 
-packages:
+software_packages:
   common:
     - name: bat
       aliases:

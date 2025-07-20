@@ -1,14 +1,14 @@
 ---
 # yamllint disable rule:line-length
 # tasks file for m3db-client
-- name: create /home/m3db directory if it doesn't exist
-  file:
+- name: Create /home/m3db directory if it doesn't exist
+  ansible.builtin.file:
     path: /home/m3db
     state: directory
-    mode: 0777
+    mode: '0777'
 
 - name: Install cifs packages for using samba share
-  package:
+  ansible.builtin.package:
     name: cifs-utils
     state: present
 
@@ -19,7 +19,7 @@
     state: stopped
 
 # state: present means create but don't mount. state: mounted means create if it doesn't exist and mount
-- name: add m3db to fstab (right now this messes up backslashes and must be fixed manually)
+- name: Add m3db to fstab (right now this messes up backslashes and must be fixed manually)
   ansible.posix.mount:
     path: /home/m3db
     src: "//ral.factor500.com/m3db"
