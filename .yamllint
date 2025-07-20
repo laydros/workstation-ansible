@@ -1,0 +1,12 @@
+yaml-files:
+  - '*.yaml'
+  - '*.yml'
+
+rules:
+  line-length:
+    max: 120
+    level: warning
+
+ignore: |
+  .venv
+  .ansible

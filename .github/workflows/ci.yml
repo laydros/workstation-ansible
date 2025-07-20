@@ -7,7 +7,8 @@ name: CI
   pull_request:
 
 jobs:
-  build:
+  lint-and-syntax:
+    name: Lint and Syntax Check
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
@@ -16,20 +17,56 @@ jobs:
           python-version: '3.x'
       - name: Install dependencies
         run: |
-          pip install ansible ansible-lint yamllint molecule[docker]
+          pip install -r requirements-dev.txt
+          ansible-galaxy collection install -r requirements.yml
       - name: Lint YAML
-        run: |
-          yamllint .
+        run: yamllint .
       - name: Ansible Lint
-        run: |
-          ansible-lint
+        run: ansible-lint
       - name: Syntax check
+        run: ansible-playbook playbooks/site.yml --syntax-check
+
+  playbook-tests:
+    name: Playbook Tests
+    runs-on: ubuntu-latest
+    needs: lint-and-syntax
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
         run: |
-          ansible-playbook playbooks/site.yml --syntax-check
-      - name: Run test playbook
+          pip install -r requirements-dev.txt
+          ansible-galaxy collection install -r requirements.yml
+      - name: Run test playbooks
         run: |
           ansible-playbook tests/test_all.yml --check -i inventory/hosts.yml
-      - name: Molecule test
-        working-directory: roles/software
+          ansible-playbook tests/test_personal_linux.yml --check -i inventory/hosts.yml
+          ansible-playbook tests/test_work_mac.yml --check -i inventory/hosts.yml
+
+  molecule-tests:
+    name: Molecule Tests
+    runs-on: ubuntu-latest
+    needs: lint-and-syntax
+    strategy:
+      fail-fast: false
+      matrix:
+        role:
+          - software
+          - flatpak
+          - gnome_setup
+          - m3db_client
+          - xdg_dirs
+    steps:
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
         run: |
-          molecule test
+          pip install -r requirements-dev.txt
+          ansible-galaxy collection install -r requirements.yml
+      - name: Molecule test
+        working-directory: roles/${{ matrix.role }}
+        run: molecule test

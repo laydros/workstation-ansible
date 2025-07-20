@@ -1,0 +1,4 @@
+---
+install_rust: false
+install_firefox: false
+install_firefox_dev: false
