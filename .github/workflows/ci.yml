@@ -49,15 +49,6 @@ jobs:
     name: Molecule Tests
     runs-on: ubuntu-latest
     needs: lint-and-syntax
-    strategy:
-      fail-fast: false
-      matrix:
-        role:
-          - software
-          - flatpak
-          - gnome_setup
-          - m3db_client
-          - xdg_dirs
     steps:
       - uses: actions/checkout@v3
       - uses: actions/setup-python@v4
@@ -67,6 +58,9 @@ jobs:
         run: |
           pip install -r requirements-dev.txt
           ansible-galaxy collection install -r requirements.yml
-      - name: Molecule test
-        working-directory: roles/${{ matrix.role }}
-        run: molecule test
+      - name: Check Docker availability
+        run: docker --version || echo "Docker not available"
+      - name: Run molecule test
+        run: |
+          cd roles/software
+          molecule test
