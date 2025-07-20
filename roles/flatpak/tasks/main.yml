@@ -1,13 +1,11 @@
 ---
 # tasks file for flatpak
 - name: Install flatpak
-  become: true
   ansible.builtin.package:
     name: flatpak
     state: present
 
 - name: Setup Flathub remote for flatpak
-  become: true
   community.general.flatpak_remote:
     name: flathub
     state: present

@@ -23,7 +23,6 @@
     dest: /tmp/
 
 - name: Move firefox folder to /opt/firefox-dev/
-  become: true
   ansible.builtin.copy: 
     src: /tmp/firefox/ 
     dest: "{{ dest_dir }}"
@@ -41,7 +40,6 @@
   changed_when: false
 
 - name: create symlink to /usr/local/bin
-  become: yes
   ansible.builtin.file: 
     src: "{{ dest_dir }}/firefox"
     dest: /usr/local/bin/firefox-dev

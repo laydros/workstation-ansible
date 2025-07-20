@@ -6,7 +6,6 @@
   register: rustup_check
 
 - name: Install rust prerequisites
-  become: true
   package:
     name: "{{ item }}"
     state: present
