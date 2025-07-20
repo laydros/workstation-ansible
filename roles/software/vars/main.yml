@@ -7,7 +7,7 @@ software_packages:
       aliases:
         Debian: batcat
     - name: curl
-    - name: exa
+    - name: eza
     - name: git
     - name: htop
     - name: ncdu
@@ -25,7 +25,6 @@ software_packages:
     - name: detox
     - name: duf
     - name: ffmpeg
-    - name: gitk
     - name: handbrake
     - name: httpie
     - name: irssi
@@ -98,7 +97,7 @@ software_packages:
         - git-delta
         - mas
         - oksh
-        - teeldear
+        - tealdeer
         - transmission
         - yadm
         - yt-dlp

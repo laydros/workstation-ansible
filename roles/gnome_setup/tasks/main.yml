@@ -15,17 +15,13 @@
     state: present
 
 - name: Set desktop gsettings
-  community.general.gsettings:
-    schema: "{{ item.schema }}"
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-    path: "{{ item.path | default(omit) }}"
+  ansible.builtin.command:
+    cmd: "gsettings set {{ item.schema }} {{ item.key }} {{ item.value }}"
   loop: "{{ gnome_setup_desktop_settings }}"
+  changed_when: false
 
 - name: Set workspace switching keyboard shortcuts
-  community.general.gsettings:
-    schema: "{{ item.schema }}"
-    key: "{{ item.key }}"
-    value: "{{ item.value }}"
-    path: "{{ item.path | default(omit) }}"
+  ansible.builtin.command:
+    cmd: "gsettings set {{ item.schema }} {{ item.key }} {{ item.value }}"
   loop: "{{ gnome_setup_keyboard_shortcuts }}"
+  changed_when: false
