@@ -3,7 +3,7 @@
 
 - name: Install gnome stuff for Fedora
   dnf:
-    name: 
+    name:
       - gnome-shell-extension-appindicator
       - gnome-shell-extension-dash-to-dock
     state: present

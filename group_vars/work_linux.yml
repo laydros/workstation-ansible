@@ -1,4 +1,9 @@
+---
 install_m3db: true
+install_rust: false
+install_firefox: false
+install_firefox_dev: false
+
 flatpak_apps:
     - ch.protonmail.protonmail-bridge
     - com.bitwarden.desktop

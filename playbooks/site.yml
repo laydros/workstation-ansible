@@ -4,7 +4,7 @@
   gather_facts: true
   roles:
     - software
-    - { role: xdg_dirs, when: configure_xdg_dirs | default(false) }
+    - {role: xdg_dirs, when: configure_xdg_dirs | default(false)}
 
 - name: Personal macOS systems
   hosts: personal_macos
@@ -23,10 +23,9 @@
   gather_facts: true
   roles:
     - software
-    - { role: m3db_client, when: install_m3db | default(false) }
+    - {role: m3db_client, when: install_m3db | default(false)}
 
 - name: Work Windows systems
   hosts: work_windows
   gather_facts: true
   roles: []  # placeholder for future
-

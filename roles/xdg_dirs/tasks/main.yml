@@ -1,20 +1,20 @@
 ---
 - name: Ensure user directories exist
   file:
-    path: "{{ item }}"
+    path: "{{item}}"
     state: directory
     mode: '0755'
   loop:
-    - "{{ ansible_env.HOME }}/doc/desktop"
-    - "{{ ansible_env.HOME }}/dl"
-    - "{{ ansible_env.HOME }}/src"
-    - "{{ ansible_env.HOME }}/music"
-    - "{{ ansible_env.HOME }}/media/img"
-    - "{{ ansible_env.HOME }}/media/video"
+    - "{{ansible_env.HOME}}/doc/desktop"
+    - "{{ansible_env.HOME}}/dl"
+    - "{{ansible_env.HOME}}/src"
+    - "{{ansible_env.HOME}}/music"
+    - "{{ansible_env.HOME}}/media/img"
+    - "{{ansible_env.HOME}}/media/video"
 
 - name: Update XDG user dirs
   command: >
-    xdg-user-dirs-update --set {{ item.key }} {{ item.value }}
+    xdg-user-dirs-update --set {{item.key}} {{item.value}}
   loop:
     - { key: DESKTOP,      value: "$HOME/doc/desktop" }
     - { key: DOWNLOAD,     value: "$HOME/dl" }
@@ -25,4 +25,3 @@
     - { key: PICTURES,     value: "$HOME/media/img" }
     - { key: VIDEOS,       value: "$HOME/media/video" }
   when: ansible_os_family in ["Debian", "RedHat", "Archlinux"]
-

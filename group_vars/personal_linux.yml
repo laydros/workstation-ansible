@@ -1,5 +1,8 @@
 ---
 configure_xdg_dirs: true
+install_rust: false
+install_firefox: false
+
 
 flatpak_apps:
     - ch.protonmail.protonmail-bridge

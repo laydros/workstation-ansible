@@ -23,24 +23,24 @@
     dest: /tmp/
 
 - name: Move firefox folder to /opt/firefox-dev/
-  ansible.builtin.copy: 
+  ansible.builtin.copy:
     src: /tmp/firefox/ 
     dest: "{{ dest_dir }}"
 
 - name: remove firefox tarball
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: "/tmp/{{ tarball_name }}"
     state: absent
   changed_when: false
 
 - name: remove unarchive folder
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: /tmp/firefox/
     state: absent
   changed_when: false
 
 - name: create symlink to /usr/local/bin
-  ansible.builtin.file: 
+  ansible.builtin.file:
     src: "{{ dest_dir }}/firefox"
     dest: /usr/local/bin/firefox-dev
     owner: root
@@ -51,4 +51,3 @@
   ansible.builtin.copy:
     src: firefox-dev.desktop
     dest: "{{ ansible_env.HOME }}/.local/share/applications/firefox-dev.desktop"
-
