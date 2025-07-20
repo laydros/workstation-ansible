@@ -94,3 +94,7 @@ Execute the test suite:
 ansible-playbook tests/test_all.yml --check -i inventory/hosts.yml
 cd roles/software && molecule test
 ```
+
+## Developer & Agent Docs
+- [AGENTS.md](AGENTS.md)
+- [CONVENTIONS.md](CONVENTIONS.md)
