@@ -12,6 +12,10 @@
     pkg_cask: "{{ packages.os_specific[current_os].brew_cask | default([]) }}"
   when: packages is defined
 
+- name: Set up Fedora package repositories
+  import_tasks: setup_fedora_repos.yml
+  when: ansible_distribution == "Fedora"
+
 - name: Install common + shared packages
   vars:
     effective_name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"
@@ -27,7 +31,6 @@
     state: present
   loop: "{{ pkg_distro }}"
   when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
-
 
 # macOS Homebrew
 - name: Update Homebrew

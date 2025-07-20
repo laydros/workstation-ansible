@@ -1,5 +1,32 @@
-- name: general laptop development setup
-  hosts: laptop
+- name: Personal Linux systems
+  hosts: personal_linux
+  become: true
   gather_facts: true
   roles:
     - software
+    - { role: xdg_dirs, when: configure_xdg_dirs | default(false) }
+
+- name: Personal macOS systems
+  hosts: personal_macos
+  gather_facts: true
+  roles:
+    - software
+
+- name: Personal Windows systems
+  hosts: personal_windows
+  gather_facts: true
+  roles: []  # TBD if needed
+
+- name: Work Linux systems
+  hosts: work_linux
+  become: true
+  gather_facts: true
+  roles:
+    - software
+    - { role: m3db_client, when: install_m3db | default(false) }
+
+- name: Work Windows systems
+  hosts: work_windows
+  gather_facts: true
+  roles: []  # placeholder for future
+
