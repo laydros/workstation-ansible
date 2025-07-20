@@ -98,7 +98,6 @@ software_packages:
         - mas
         - oksh
         - tealdeer
-        - transmission
         - yadm
         - yt-dlp
       rust_pkgs: []  # usually installed via brew
@@ -110,6 +109,7 @@ software_packages:
         - iterm2
         - libreoffice
         - mattermost
+        - transmission
         - meld
         - musicbrainz-picard
         - openemu
