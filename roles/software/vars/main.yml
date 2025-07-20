@@ -1,0 +1,125 @@
+# roles/software/vars/main.yml
+
+packages:
+  common:
+    - name: bat
+      aliases:
+        Debian: batcat
+    - name: curl
+    - name: exa
+    - name: git
+    - name: htop
+    - name: ncdu
+    - name: ripgrep
+    - name: tree
+    - name: tmux
+    - name: zsh
+
+  shared:
+    - name: ansible
+    - name: ansible-lint
+    - name: aria2
+    - name: btop
+    - name: cmake
+    - name: detox
+    - name: duf
+    - name: ffmpeg
+    - name: gitk
+    - name: handbrake
+    - name: httpie
+    - name: irssi
+    - name: neofetch
+    - name: neovim
+    - name: meld
+    - name: mpv
+    - name: mupdf
+    - name: pkg-config
+    - name: syncthing
+    - name: yt-dlp
+
+  os_specific:
+    Debian:
+      distro_pkgs:
+        - flatpak
+        - fd-find
+        - torbrowser-launcher
+        - yadm
+        - build-essential
+      rust_pkgs:
+        - cmake
+        - pkg-config
+        - libfreetype6-dev
+        - libfontconfig1-dev
+        - libxcb-xfixes0-dev
+        - libxkbcommon-dev
+        - python3
+
+    RedHat:
+      distro_pkgs:
+        - alacritty
+        - flatpak
+        - gcc
+        - gcc-c++
+        - git-delta
+        - kernel-devel
+        - make
+        - oksh
+        - tealdeer
+        - torbrowser-launcher
+      rust_pkgs:
+        - cmake
+        - freetype-devel
+        - fontconfig-devel
+        - libxcb-devel
+        - libxkbcommon-devel
+        - g++
+
+    Archlinux:
+      distro_pkgs:
+        - flatpak
+        - fd-find
+        - torbrowser-launcher
+        - yadm
+      rust_pkgs:
+        - cmake
+        - freetype2
+        - fontconfig
+        - pkg-config
+        - make
+        - libxcb
+        - libxkbcommon
+        - python
+
+    Darwin:
+      distro_pkgs:
+        - fd
+        - ssh-copy-id
+        - git-delta
+        - mas
+        - oksh
+        - teeldear
+        - transmission
+        - yadm
+        - yt-dlp
+      rust_pkgs: []  # usually installed via brew
+      brew_cask:
+        - alfred
+        - bettertouchtool
+        - bitwarden
+        - firefox
+        - iterm2
+        - libreoffice
+        - mattermost
+        - meld
+        - musicbrainz-picard
+        - openemu
+        - protonmail-bridge
+        - protonvpn
+        - signal
+        - spotify
+        - steam
+        - soundsource
+        - tor-browser
+        - transmission
+        - transmit
+        - vlc

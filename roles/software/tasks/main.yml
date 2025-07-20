@@ -1,35 +1,64 @@
 ---
-# Install software packages depending on the operating system
+- name: Set current OS key
+  set_fact:
+    current_os: "{{ ansible_os_family }}"
 
-- name: Update APT cache
-  apt:
-    update_cache: yes
-  when: ansible_os_family == "Debian"
+- name: Set package list
+  set_fact:
+    pkg_common: "{{ packages.common | default([]) }}"
+    pkg_shared: "{{ packages.shared | default([]) }}"
+    pkg_distro: "{{ packages.os_specific[current_os].distro_pkgs | default([]) }}"
+    pkg_rust: "{{ packages.os_specific[current_os].rust_pkgs | default([]) }}"
+    pkg_cask: "{{ packages.os_specific[current_os].brew_cask | default([]) }}"
+  when: packages is defined
 
-- name: Install APT packages
-  apt:
+- name: Install common + shared packages
+  vars:
+    effective_name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"
+  package:
+    name: "{{ effective_name }}"
+    state: present
+  loop: "{{ pkg_common + pkg_shared }}"
+  when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
+
+- name: Install distro-specific packages
+  package:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-  loop: "{{ apt_packages | default([]) }}"
-  when: ansible_os_family == "Debian"
+  loop: "{{ pkg_distro }}"
+  when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
-- name: Install DNF packages
-  dnf:
+- name: Install Rust pre-req packages
+  package:
     name: "{{ item }}"
     state: present
-    update_cache: yes
-  loop: "{{ dnf_packages | default([]) }}"
-  when: ansible_os_family == "RedHat"
+  loop: "{{ pkg_rust }}"
+  when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
 
+# macOS Homebrew
 - name: Update Homebrew
   community.general.homebrew:
-    update_homebrew: yes
+    update_homebrew: true
   when: ansible_os_family == "Darwin"
 
 - name: Install Homebrew packages
   community.general.homebrew:
+    name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"
+    state: present
+  loop: "{{ pkg_common + pkg_shared }}"
+  when: ansible_os_family == "Darwin"
+
+- name: Install Homebrew distro packages
+  community.general.homebrew:
     name: "{{ item }}"
     state: present
-  loop: "{{ homebrew_packages | default([]) }}"
+  loop: "{{ pkg_distro }}"
   when: ansible_os_family == "Darwin"
+
+- name: Install Homebrew cask packages
+  community.general.homebrew_cask:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ pkg_cask }}"
+  when: ansible_os_family == "Darwin"
+
