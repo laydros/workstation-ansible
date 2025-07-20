@@ -1,8 +1,0 @@
----
-# The Ubuntu releases that have backports repositories
-backports_base_uri: "http://archive.ubuntu.com/ubuntu"
-backports_components: "{{ ansible_distribution_release }}-backports main restricted universe multiverse"
-backports_prereqs: []
-supported_releases:
-  - bionic
-  - focal

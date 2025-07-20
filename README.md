@@ -18,7 +18,7 @@ ansible-playbook -i hosts mac-based.yml     -c local -K
 
 - **debian-based.yml** – installs common packages for Debian/Ubuntu systems using the `common` and `flatpak` roles.
 - **fedora-based.yml** – installs packages for Fedora systems and applies GNOME tweaks. Roles used: `common`, `m3db_client`, `gnome_setup`, and `flatpak`.
-- **mac-based.yml** – installs Homebrew packages via the `mac-software` role.
+- **mac-based.yml** – installs Homebrew packages via the `software` role.
 - **site.yml** – example playbook invoking the generic `software` role.
 
 ## Roles
@@ -29,7 +29,7 @@ Each directory under `roles/` contains an Ansible role. Highlights include:
 - **flatpak** – installs flatpak and a selection of desktop applications from Flathub.
 - **gnome_setup** – configures GNOME settings and keyboard shortcuts.
 - **m3db_client** – optional setup for mounting a network share.
-- **debian_software**, **fedora-software**, **mac-software**, and **software** – OS specific package lists.
+- **software** – unified package installation role for Debian, Fedora, and macOS.
 
 Role READMEs currently contain only scaffolding text.
 

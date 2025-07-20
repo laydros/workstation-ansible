@@ -1,19 +1,35 @@
 ---
-# tasks file for software
+# Install software packages depending on the operating system
 
-- name: Install packages using APT on Debian systems
-  become: true
+- name: Update APT cache
+  apt:
+    update_cache: yes
+  when: ansible_os_family == "Debian"
+
+- name: Install APT packages
   apt:
     name: "{{ item }}"
     state: present
     update_cache: yes
-  loop: "{{ apt_packages }}"
-  when: ansible_os_family == 'Debian'
+  loop: "{{ apt_packages | default([]) }}"
+  when: ansible_os_family == "Debian"
 
-- name: Install packages using Homebrew on macOS
+- name: Install DNF packages
+  dnf:
+    name: "{{ item }}"
+    state: present
+    update_cache: yes
+  loop: "{{ dnf_packages | default([]) }}"
+  when: ansible_os_family == "RedHat"
+
+- name: Update Homebrew
+  community.general.homebrew:
+    update_homebrew: yes
+  when: ansible_os_family == "Darwin"
+
+- name: Install Homebrew packages
   community.general.homebrew:
     name: "{{ item }}"
     state: present
-  loop: "{{ homebrew_packages }}"
-  when: ansible_os_family == 'Darwin'
-
+  loop: "{{ homebrew_packages | default([]) }}"
+  when: ansible_os_family == "Darwin"
