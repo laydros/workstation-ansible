@@ -18,7 +18,7 @@
 
 - name: set source url
   set_fact:
-    source_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"
+    source_url: "https://download.mozilla.org/?product=firefox-latest-ssl&os=linux64&lang=en-US"  # yamllint disable-line rule:line-length
 
 - name: Download firefox dev to /tmp
   ansible.builtin.get_url:
@@ -31,32 +31,31 @@
     dest: /tmp/
 
 - name: Move firefox folder to /opt/firefox/
-  ansible.builtin.copy: 
-    src: "/tmp/{{ prog_name }}/" 
+  ansible.builtin.copy:
+    src: "/tmp/{{ prog_name }}/"
     dest: "{{ dest_dir }}"
 
 - name: remove firefox tarball
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: "/tmp/{{ tarball_name }}"
     state: absent
   changed_when: false
 
 - name: remove unarchive folder
-  ansible.builtin.file: 
+  ansible.builtin.file:
     path: "/tmp/{{ prog_name}}/"
     state: absent
   changed_when: false
 
 - name: create symlink to /usr/local/bin
-  ansible.builtin.file: 
+  ansible.builtin.file:
     src: "{{ dest_dir }}/{{ prog_name }}"
     dest: "/usr/local/bin/{{ prog_name }}"
-    owner: root
-    group: root
-    state: link
+  owner: root
+  group: root
+  state: link
 
 - name: create .desktop entry
   ansible.builtin.copy:
     src: "{{ prog_name }}.desktop"
     dest: "{{ user_home }}/.local/share/applications/{{ prog_name }}.desktop"
-

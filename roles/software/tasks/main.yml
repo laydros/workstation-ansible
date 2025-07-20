@@ -7,7 +7,7 @@
   set_fact:
     pkg_common: "{{ packages.common | default([]) }}"
     pkg_shared: "{{ packages.shared | default([]) }}"
-    pkg_distro: "{{ packages.os_specific[current_os].distro_pkgs | default([]) }}"
+    pkg_distro: "{{ packages.os_specific[current_os].distro_pkgs | default([]) }}"  # yamllint disable-line rule:line-length
     pkg_rust: "{{ packages.os_specific[current_os].rust_pkgs | default([]) }}"
     pkg_cask: "{{ packages.os_specific[current_os].brew_cask | default([]) }}"
   when: packages is defined
@@ -18,7 +18,7 @@
 
 - name: Install common + shared packages
   vars:
-    effective_name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"
+    effective_name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"  # yamllint disable-line rule:line-length
   package:
     name: "{{ effective_name }}"
     state: present
@@ -40,7 +40,7 @@
 
 - name: Install Homebrew packages
   community.general.homebrew:
-    name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"
+    name: "{{ item.aliases[current_os] if item.aliases is defined and item.aliases[current_os] is defined else item.name }}"  # yamllint disable-line rule:line-length
     state: present
   loop: "{{ pkg_common + pkg_shared }}"
   when: ansible_os_family == "Darwin"
