@@ -5,4 +5,5 @@ inventory/*.retry
 .ansible
 .claude/
 .DS_Store
+.venv/
 

@@ -5,9 +5,11 @@ software_packages:
   common:
     - name: bat
       aliases:
-        Debian: batcat
+        Debian: bat
     - name: curl
     - name: eza
+      aliases:
+        Debian: ""
     - name: git
     - name: htop
     - name: ncdu

@@ -23,7 +23,10 @@
     name: "{{ effective_name }}"
     state: present
   loop: "{{ pkg_common + pkg_shared }}"
-  when: ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
+  when: 
+    - ansible_os_family in ['Debian', 'RedHat', 'Archlinux']
+    - effective_name | length > 0
+  
 
 - name: Install distro-specific packages
   ansible.builtin.package:

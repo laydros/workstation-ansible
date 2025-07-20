@@ -1,7 +1,8 @@
 ---
 configure_xdg_dirs: true
-install_rust: false
+install_rust: true
 install_firefox: false
+use_gnome: true
 
 
 flatpak_apps:
